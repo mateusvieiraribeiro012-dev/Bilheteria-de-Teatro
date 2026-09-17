@@ -32,12 +32,12 @@ for inscricao in lista_inscricao:
  
 # Exemplo: alterar a idade:
  
-nome_aluno = input('Digite o nome do aluno a ser alterado: ')      #Input quem quer alterar
+nome_alterado = input('Digite o nome da inscriçao a ser alterado: ')      #Input quem quer alterar
 nova_idade = input('Digite a nova idade: ')   #Input nova idade
 poltrona_alterada = input('Digite o número da poltrona alterada: ')   #Input nova poltrona
  
 for inscricao in lista_inscricao:
-    if nome_aluno == inscricao['nome']:
+    if nome_alterado == inscricao['nome']:
         inscricao['idade'] = nova_idade
         inscricao['poltrona'] = poltrona_alterada
  
@@ -47,10 +47,10 @@ for inscricao in lista_inscricao:
 # DELETE
  
  
-nome_aluno = input('Digite o nome do aluno a ser deletado: ')   #Input quem quer deletar
+nome_deletado = input('Digite o nome da inscrição a ser deletada: ')   #Input quem quer deletar
  
 for inscricao in lista_inscricao:
-    if nome_aluno == inscricao['nome']:
+    if nome_deletado == inscricao['nome']:
         lista_inscricao.remove(inscricao)
  
  

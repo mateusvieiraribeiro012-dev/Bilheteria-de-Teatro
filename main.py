@@ -10,8 +10,8 @@ status_inscricao = 'Confirmado'
  
 nova_inscricao = {
     'nome': nome,
-    'curso': curso,
-    'carga_horaria': carga_horaria,
+    'idade': Idade,
+    'poltrona': Poltrona,
     'status_inscricao': status_inscricao
 }
  
@@ -23,22 +23,23 @@ print(lista_inscricao)
 #READ/IMPRIMIR
  
 for inscricao in lista_inscricao:    
-    print(f'Nome: {inscricao['nome']}\nCurso: {inscricao['curso']}\nCarga Horária: {inscricao['carga_horaria']}\nStatus: {inscricao['status_inscricao']}')
+    print(f'Nome: {inscricao['nome']}\nIdade: {inscricao['idade']}\nPoltrona: {inscricao['poltrona']}\nStatus: {inscricao['status_inscricao']}')
  
  
 # UPDATE
  
 #("Quem? O que?")
  
-# Exemplo: alterar o curso:
+# Exemplo: alterar a idade:
  
-nome_aluno = 'Raphael'      #Input quem quer alterar
-novo_curso = 'artesanato'   #Input novo curso
-carga_horaria = 5
+nome_aluno = input('Digite o nome do aluno a ser alterado: ')      #Input quem quer alterar
+nova_idade = input('Digite a nova idade: ')   #Input nova idade
+poltrona_alterada = input('Digite o número da poltrona alterada: ')   #Input nova poltrona
  
 for inscricao in lista_inscricao:
     if nome_aluno == inscricao['nome']:
-        inscricao['curso'] = novo_curso
+        inscricao['idade'] = nova_idade
+        inscricao['poltrona'] = poltrona_alterada
  
  
 #Você pode fazer um FOR para alterar qualquer coisa do dicionário
@@ -46,7 +47,7 @@ for inscricao in lista_inscricao:
 # DELETE
  
  
-nome_aluno = 'Raphael'   #Input quem quer deletar
+nome_aluno = input('Digite o nome do aluno a ser deletado: ')   #Input quem quer deletar
  
 for inscricao in lista_inscricao:
     if nome_aluno == inscricao['nome']:

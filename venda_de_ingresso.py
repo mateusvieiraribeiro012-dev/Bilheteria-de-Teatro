@@ -1,4 +1,5 @@
-ingressos = []
+import utils
+ingressos = utils.abrir_arquivo()
 
 
 while True:
@@ -25,6 +26,7 @@ while True:
         
         ingressos.append(ingresso)   
         print("Ingresso cadastrado com sucesso!")
+        utils.salva_arquivo(ingressos)
 
     elif opcao == "2":
             if not ingressos:

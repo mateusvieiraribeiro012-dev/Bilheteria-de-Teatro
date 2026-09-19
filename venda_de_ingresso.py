@@ -3,7 +3,7 @@ ingressos = []
 
 while True:
     print("\nEscolha uma opção:")
-    print("\n[1] Ingresso, \n[2 ]Arrecadações, \n[3] Cancelamento, \n[4] Alterar poltrona, \n[5] Cancelar ingresso, \n[0] Sair")
+    print("\n[1] Ingresso, \n[2 ]Listar Ingressos, \n[3] Alterar poltrona, \n[4] Cancelamento, \n[5] Atualizar ingresso \n[0] Sair")
     opcao = input("Digite uma Opção: ")
     
     if opcao == "1":
@@ -13,29 +13,84 @@ while True:
         qtd_ingressos = input("Digite quantos ingressos deseja comprar: ")  
         filme = input("Digite qual filme deseja assitir: ")
 
-        ingresso = {'nome': nome, 'idade': idade, 'filme': filme, 'poltrona': poltrona, 'qtd_ingressos': qtd_ingressos, 'filme': filme}
+        ingresso = {
+            'nome': nome, 
+            'idade': idade,
+            'filme': filme,
+            'poltrona': poltrona,
+            'qtd_ingressos': qtd_ingressos,
+            'filme': filme
+        }
         
-        ingressos.append(ingressos)   
+        
+        ingressos.append(ingresso)   
+        print("Ingresso cadastrado com sucesso!")
+
     elif opcao == "2":
-         for ingresso in ingressos:
-            print(f"{ingresso['nome']} | {ingresso['idade']}  | {ingresso['poltrona']} | {ingresso['qtd_ingressos']} | {ingresso['filme']}")
-    
+            if not ingressos:
+                    print("\nNenhum ingresso cadastrado!")
+            else:
+                print("Eu existo")
+                for ingresso in ingressos:
+                    print(f"{ingresso['nome']} | {ingresso['idade']}  | {ingresso['poltrona']} | {ingresso['qtd_ingressos']} | {ingresso['filme']}")
+                continue
+
+
     elif opcao == "3":
-        for ingresso in ingressos:
-            nome = input("Digite seu nome: ")
-            nova_poltrona = input("Digite a nova poltrona: ")
-            for ingresso in ingressos:
-                    if ingresso['nome'] == nome:
-                        ingresso['poltrona'] = nova_poltrona
+          nome_busca = input("Digite o nome do comprador: ")
+          encontrado = False
+          for ingresso in ingressos:
+            if ingresso['nome'] == nome_busca:
+                nova_poltrona = input("\nDigite a nova poltrona: ")
+                ingresso['poltrona'] = nova_poltrona
+                print("\nPoltrona alterada com sucesso!")
+                encontrado = True
+                break
+
+            if not encontrado:
+                print("\nComprador não encontrado.")
+
     elif opcao == "4":
-        nome = input("Digite seu nome: ")
-        for ingresso in ingressos:
-            if ingresso['nome'] == nome:
-                ingressos.remove(ingresso)
+        nome_busca = input("Digite o nome do comprador para cancelar o ingresso: ")
+        encontrado = False
+        for ing in ingressos:
+            if ing['nome'] == nome_busca:
+                ingressos.remove(ing)
+                print("\nIngresso cancelado com sucesso!")
+                encontrado = True
+                break
+        if not encontrado:
+            print("\nComprador não encontrado.")
+
     elif opcao == "5":
-        nome = input("Digite seu nome: ")
-        for ingresso in ingressos:
-            if ingresso['nome'] == nome:
-                ingressos.remove(ingresso)
-    else:
+         nome_busca = input("Digite o nome do comprador que deseja atualizar: ")
+         encontrado = False
+         for ingresso in ingressos:
+            if ingresso['nome'] == nome_busca:
+                print(f"\nComprador encontrado! Digite os novos dados (ou aperte Enter para manter se preferir):")
+                
+                novo_nome = input(f"Novo nome [{ingresso['nome']}]: ")
+                nova_idade = input(f"Nova idade [{ingresso['idade']}]: ")
+                novo_filme = input(f"Novo filme [{ingresso['filme']}]: ")
+                nova_poltrona = input(f"Nova poltrona [{ingresso['poltrona']}]: ")
+                nova_qtd = input(f"Nova quantidade [{ingresso['qtd_ingressos']}]: ")
+
+                # Se o usuário digitar algo, atualiza; senão, mantém o valor antigo
+                if novo_nome:
+                    ingresso['nome'] = novo_nome
+                if nova_idade:
+                    ingresso['idade'] = nova_idade
+                if novo_filme:
+                    ingresso['filme'] = novo_filme
+                if nova_poltrona:
+                    ingresso['poltrona'] = nova_poltrona
+                if nova_qtd:
+                    ingresso['qtd_ingressos'] = nova_qtd
+
+                print("\nIngresso atualizado com sucesso!")
+                encontrado = True
+                break
+            
+    elif opcao == "0":
+        print("\nSaindo do sistema")
         break
